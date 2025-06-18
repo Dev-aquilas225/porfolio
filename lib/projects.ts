@@ -1,13 +1,13 @@
-// lib/projects.ts
 export interface Project {
     id: number;
     title: string;
     description: string;
     image: string;
     technologies: string[];
-    category: string;
-    liveUrl: string;
-    githubUrl: string;
+    type: string;
+    company?: string;
+    location?: string;
+    date?: string;
     featured: boolean;
 }
 
@@ -19,243 +19,188 @@ export interface ProjectDetails {
     technologies: string[];
     features: string[];
     duration: string;
-    team: string;
+    team?: string;
     role: string;
-    liveUrl: string;
-    githubUrl: string;
-    gallery: string[];
+    location?: string;
+    date?: string;
 }
 
 export const projects: Project[] = [
     {
         id: 1,
-        title: "E-Commerce Platform",
-        description:
-            "Plateforme e-commerce complète avec gestion des commandes, paiements et tableau de bord admin",
-        image: "https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800",
-        technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
-        category: "Fullstack",
-        liveUrl: "#",
-        githubUrl: "#",
+        title: "Développeur Backend",
+        description: "Développement d'API pour les projets, déploiement direct sur le serveur, et intégration d'API externes.",
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2070&auto=format&fit=crop",
+        technologies: ["Node.js", "Express", "PostgreSQL", "REST API", "Docker"],
+        type: "Professional",
+        company: "Illimigroup",
+        location: "Rivera palmeraie, Abidjan",
+        date: "24 Janvier 2025 → 24 Avril 2025",
         featured: true,
     },
     {
         id: 2,
-        title: "Task Management App",
-        description:
-            "Application de gestion de tâches collaborative avec notifications en temps réel",
-        image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
-        technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-        category: "Fullstack",
-        liveUrl: "#",
-        githubUrl: "#",
+        title: "Développeur Fullstack",
+        description: "Contribution au développement d'applications web innovantes en utilisant des technologies frontend et backend modernes.",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
+        technologies: ["React", "Node.js", "MongoDB", "JavaScript", "CSS"],
+        type: "Professional",
+        company: "cabinenet",
+        location: "Freelance, Abidjan",
+        date: "Mai 2024 → Novembre 2024",
         featured: false,
     },
     {
         id: 3,
-        title: "Weather Dashboard",
-        description:
-            "Dashboard météo interactif avec géolocalisation et prévisions détaillées",
-        image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800",
-        technologies: ["Vue.js", "Chart.js", "OpenWeather API"],
-        category: "Frontend",
-        liveUrl: "#",
-        githubUrl: "#",
+        title: "Stage École pour BTS",
+        description: "Développement d'une plateforme de prise de rendez-vous médicale en ligne.",
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2070&auto=format&fit=crop",
+        technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+        type: "Professional",
+        company: "ORW GROUP",
+        location: "Koumassie, Abidjan",
+        date: "Octobre 2023 → 27 Avril 2024",
         featured: false,
     },
     {
         id: 4,
-        title: "API REST Blog",
-        description:
-            "API RESTful pour un système de blog avec authentification JWT et gestion des rôles",
-        image: "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=800",
-        technologies: ["Express.js", "JWT", "MongoDB", "Swagger"],
-        category: "Backend",
-        liveUrl: "#",
-        githubUrl: "#",
+        title: "Licence en réseau et génie logiciel",
+        description: "Formation en cours axée sur les réseaux informatiques et le développement de logiciels.",
+        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop",
+        technologies: ["Networking", "Software Development", "Java", "Linux", "System Administration"],
+        type: "Educational",
+        company: "Pigier CI",
+        location: "Abidjan, Plateau",
+        date: "2021 → present",
         featured: false,
     },
     {
         id: 5,
-        title: "Mobile Banking App",
-        description:
-            "Application bancaire mobile avec fonctionnalités de transfert et historique des transactions",
-        image: "https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?auto=compress&cs=tinysrgb&w=800",
-        technologies: ["React Native", "Redux", "Node.js", "PostgreSQL"],
-        category: "Mobile",
-        liveUrl: "#",
-        githubUrl: "#",
-        featured: true,
+        title: "BTS en informatique développeur d'application",
+        description: "Formation technique en développement d'applications avec un focus sur la programmation.",
+        image: "https://images.unsplash.com/photo-1551287616-0404a80b5e2e?q=80&w=2070&auto=format&fit=crop",
+        technologies: ["JavaScript", "HTML/CSS", "Python", "Database Management", "App Development"],
+        type: "Educational",
+        company: "Pigier CI",
+        location: "Abidjan, Plateau",
+        date: "2023",
+        featured: false,
     },
     {
         id: 6,
-        title: "Portfolio Website",
-        description: "Site portfolio responsive avec animations et mode sombre",
-        image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
-        technologies: ["Next.js", "Framer Motion", "Tailwind CSS"],
-        category: "Frontend",
-        liveUrl: "#",
-        githubUrl: "#",
+        title: "Certificat spécialiste en Microsoft Office",
+        description: "Certification professionnelle sur l'utilisation avancée des outils Microsoft Office.",
+        image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop",
+        technologies: ["Microsoft Word", "Excel", "PowerPoint", "Office Automation", "Data Analysis"],
+        type: "Educational",
+        company: "Pigier CI",
+        location: "Abidjan, Plateau",
+        date: "2021",
         featured: false,
     },
 ];
 
 export const projectsData: { [key: string]: ProjectDetails } = {
     "1": {
-        title: "E-Commerce Platform",
-        description:
-            "Plateforme e-commerce complète avec gestion des commandes, paiements et tableau de bord admin",
-        longDescription: `Cette plateforme e-commerce moderne offre une expérience utilisateur exceptionnelle avec un design responsive et des fonctionnalités avancées. Elle comprend un système de gestion des produits, un panier d'achat intuitif, un processus de commande sécurisé et un tableau de bord administrateur complet.
-  
-      Le projet a été développé en utilisant les dernières technologies web pour assurer des performances optimales et une scalabilité maximale. L'architecture modulaire permet une maintenance facile et des extensions futures.`,
-        image: "https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1200",
-        technologies: [
-            "Next.js",
-            "TypeScript",
-            "Stripe",
-            "PostgreSQL",
-            "Tailwind CSS",
-            "Prisma",
-        ],
+        title: "Développeur Backend",
+        description: "Développement d'API pour les projets, déploiement direct sur le serveur, et intégration d'API externes.",
+        longDescription: `Mission chez Illimigroup impliquant le développement d'API robustes pour divers projets internes. Les tâches incluaient le déploiement direct sur les serveurs, l'optimisation des performances, et l'intégration d'API externes pour enrichir les fonctionnalités. Le projet a nécessité une coordination étroite avec les équipes pour assurer une livraison dans les délais.`,
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
+        technologies: ["Node.js", "Express", "PostgreSQL", "REST API", "Docker"],
         features: [
-            "Authentification utilisateur sécurisée",
-            "Gestion complète des produits",
-            "Panier d'achat et checkout",
-            "Intégration Stripe pour les paiements",
-            "Tableau de bord administrateur",
-            "Notifications en temps réel",
-            "Design responsive",
+            "Développement d'API sécurisées",
+            "Déploiement serveur",
+            "Intégration d'API externes",
+            "Optimisation des performances",
         ],
         duration: "3 mois",
-        team: "4 développeurs",
-        role: "Lead Developer",
-        liveUrl: "#",
-        githubUrl: "#",
-        gallery: [
-            "https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=800",
-        ],
+        role: "Développeur Backend",
+        location: "Rivera palmeraie, Abidjan",
+        date: "24 Janvier 2025 → 24 Avril 2025",
     },
     "2": {
-        title: "Task Management App",
-        description:
-            "Application de gestion de tâches collaborative avec notifications en temps réel",
-        longDescription: `Cette application permet aux équipes de collaborer efficacement sur des projets grâce à des fonctionnalités de gestion de tâches en temps réel. Les utilisateurs peuvent créer, assigner et suivre des tâches avec des notifications instantanées pour les mises à jour.
-  
-      Le projet utilise une architecture basée sur des WebSockets pour assurer une synchronisation rapide et une expérience utilisateur fluide, même avec plusieurs utilisateurs simultanés.`,
-        image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1200",
-        technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
+        title: "Développeur Fullstack",
+        description: "Contribution au développement d'applications web innovantes en utilisant des technologies frontend et backend modernes.",
+        longDescription: `Projet freelance pour cabinenet impliquant le développement d'applications web fullstack. Les responsabilités incluaient la création d'interfaces utilisateur modernes avec React, la gestion backend avec Node.js, et l'intégration de bases de données MongoDB, le tout dans un environnement collaboratif et innovant.`,
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
+        technologies: ["React", "Node.js", "MongoDB", "JavaScript", "CSS"],
         features: [
-            "Notifications en temps réel",
-            "Gestion des tâches collaborative",
-            "Tableau Kanban interactif",
-            "Authentification utilisateur",
-            "Historique des modifications",
+            "Développement frontend et backend",
+            "Intégration MongoDB",
+            "Interface utilisateur moderne",
+            "Collaboration freelance",
         ],
-        duration: "2 mois",
-        team: "3 développeurs",
-        role: "Frontend Developer",
-        liveUrl: "#",
-        githubUrl: "#",
-        gallery: [
-            "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=800",
-        ],
+        duration: "7 mois",
+        role: "Développeur Fullstack",
+        location: "Freelance, Abidjan",
+        date: "Mai 2024 → Novembre 2024",
     },
     "3": {
-        title: "Weather Dashboard",
-        description:
-            "Dashboard météo interactif avec géolocalisation et prévisions détaillées",
-        longDescription: `Ce tableau de bord météo permet aux utilisateurs de consulter les prévisions météorologiques en temps réel grâce à l'intégration de l'API OpenWeather. Il offre une interface interactive avec des visualisations de données météorologiques et la prise en charge de la géolocalisation.
-  
-      Le projet met l'accent sur une expérience utilisateur intuitive avec des animations fluides et un design responsive adapté à tous les appareils.`,
-        image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1200",
-        technologies: ["Vue.js", "Chart.js", "OpenWeather API"],
+        title: "Stage École pour BTS",
+        description: "Développement d'une plateforme de prise de rendez-vous médicale en ligne.",
+        longDescription: `Stage effectué chez ORW GROUP dans le cadre de la formation BTS, axé sur la création d'une plateforme de prise de rendez-vous médicale. Le projet a impliqué le développement d'une interface web basique et la gestion d'une base de données pour stocker les rendez-vous, offrant une première expérience pratique en développement.`,
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
+        technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
         features: [
-            "Prévisions météo en temps réel",
-            "Géolocalisation automatique",
-            "Graphiques interactifs",
-            "Design responsive",
+            "Plateforme de rendez-vous",
+            "Gestion de base de données",
+            "Interface web basique",
+            "Expérience pratique",
         ],
-        duration: "1 mois",
-        team: "2 développeurs",
-        role: "Frontend Developer",
-        liveUrl: "#",
-        githubUrl: "#",
-        gallery: [
-            "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800",
-        ],
+        duration: "6 mois",
+        role: "Stagiaire Développeur",
+        location: "Koumassie, Abidjan",
+        date: "Octobre 2023 → 27 Avril 2024",
     },
     "4": {
-        title: "API REST Blog",
-        description:
-            "API RESTful pour un système de blog avec authentification JWT et gestion des rôles",
-        longDescription: `Cette API RESTful fournit une infrastructure robuste pour un système de blog, avec des fonctionnalités d'authentification sécurisée via JWT, gestion des rôles (administrateur, éditeur, utilisateur) et documentation Swagger.
-  
-      L'API est conçue pour être scalable, avec une architecture claire et des endpoints optimisés pour une intégration facile avec des interfaces frontend.`,
-        image: "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1200",
-        technologies: ["Express.js", "JWT", "MongoDB", "Swagger"],
+        title: "Licence en réseau et génie logiciel",
+        description: "Formation en cours axée sur les réseaux informatiques et le développement de logiciels.",
+        longDescription: `Formation en cours à Pigier CI, se concentrant sur les réseaux informatiques et le développement logiciel. Cette licence offre une base solide en administration système, programmation, et gestion des réseaux, avec des projets pratiques pour renforcer les compétences techniques.`,
+        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop",
+        technologies: ["Networking", "Software Development", "Java", "Linux", "System Administration"],
         features: [
-            "Authentification JWT",
-            "Gestion des rôles",
-            "Documentation Swagger",
-            "CRUD pour articles et commentaires",
+            "Cours sur les réseaux",
+            "Développement logiciel",
+            "Projets pratiques",
+            "Administration système",
         ],
-        duration: "1.5 mois",
-        team: "2 développeurs",
-        role: "Backend Developer",
-        liveUrl: "#",
-        githubUrl: "#",
-        gallery: [
-            "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=800",
-        ],
+        duration: "Ongoing (since 2021)",
+        role: "Étudiant",
+        location: "Abidjan, Plateau",
+        date: "2021 → present",
     },
     "5": {
-        title: "Mobile Banking App",
-        description:
-            "Application bancaire mobile avec fonctionnalités de transfert et historique des transactions",
-        longDescription: `Cette application mobile permet aux utilisateurs de gérer leurs finances avec des fonctionnalités telles que les transferts d'argent, la consultation de l'historique des transactions et la gestion de comptes. Elle est conçue pour offrir une expérience utilisateur fluide et sécurisée.
-  
-      Le projet utilise React Native pour une compatibilité multiplateforme et une intégration backend robuste avec Node.js.`,
-        image: "https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?auto=compress&cs=tinysrgb&w=1200",
-        technologies: ["React Native", "Redux", "Node.js", "PostgreSQL"],
+        title: "BTS en informatique développeur d'application",
+        description: "Formation technique en développement d'applications avec un focus sur la programmation.",
+        longDescription: `Formation BTS à Pigier CI axée sur le développement d'applications, offrant une introduction approfondie à la programmation et à la gestion de bases de données. Le programme incluait des projets pratiques pour développer des compétences en développement d'applications web et mobiles.`,
+        image: "https://images.unsplash.com/photo-1551287616-0404a80b5e2e?q=80&w=1200&auto=format&fit=crop",
+        technologies: ["JavaScript", "HTML/CSS", "Python", "Database Management", "App Development"],
         features: [
-            "Transferts d'argent sécurisés",
-            "Historique des transactions",
-            "Authentification biométrique",
-            "Notifications push",
+            "Programmation avancée",
+            "Gestion de bases de données",
+            "Projets d'application",
+            "Développement web",
         ],
-        duration: "4 mois",
-        team: "5 développeurs",
-        role: "Mobile Developer",
-        liveUrl: "#",
-        githubUrl: "#",
-        gallery: [
-            "https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?auto=compress&cs=tinysrgb&w=800",
-        ],
+        duration: "2 ans",
+        role: "Étudiant",
+        location: "Abidjan, Plateau",
+        date: "2023",
     },
     "6": {
-        title: "Portfolio Website",
-        description: "Site portfolio responsive avec animations et mode sombre",
-        longDescription: `Ce site portfolio met en avant mes projets avec un design moderne, des animations fluides grâce à Framer Motion, et un mode sombre pour une meilleure expérience utilisateur. Il est optimisé pour tous les appareils et offre une navigation intuitive.
-  
-      Le projet utilise Next.js pour un rendu rapide et Tailwind CSS pour un style cohérent et maintenable.`,
-        image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1200",
-        technologies: ["Next.js", "Framer Motion", "Tailwind CSS"],
+        title: "Certificat spécialiste en Microsoft Office",
+        description: "Certification professionnelle sur l'utilisation avancée des outils Microsoft Office.",
+        longDescription: `Certification obtenue à Pigier CI, couvrant l'utilisation avancée de Microsoft Word, Excel, et PowerPoint. Cette formation a permis de maîtriser les outils de productivité et d'analyse de données, utiles pour des tâches administratives et de gestion de projets.`,
+        image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop",
+        technologies: ["Microsoft Word", "Excel", "PowerPoint", "Office Automation", "Data Analysis"],
         features: [
-            "Design responsive",
-            "Animations fluides",
-            "Mode sombre",
-            "Optimisation SEO",
+            "Maîtrise de Word",
+            "Analyse de données avec Excel",
+            "Présentations PowerPoint",
+            "Automatisation Office",
         ],
-        duration: "1 mois",
-        team: "1 développeur",
-        role: "Fullstack Developer",
-        liveUrl: "#",
-        githubUrl: "#",
-        gallery: [
-            "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
-        ],
+        duration: "3 mois",
+        role: "Étudiant",
+        location: "Abidjan, Plateau",
+        date: "2021",
     },
 };

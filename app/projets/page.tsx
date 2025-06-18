@@ -1,22 +1,43 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink, Github, Folder, Filter } from "lucide-react";
-import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Folder } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { projects } from "@/lib/projects";
 
-const categories = ["Tous", "Frontend", "Backend", "Fullstack", "Mobile"];
+const experiences = [
+    {
+        id: "1",
+        title: "Développeur Backend",
+        company: "Illimigroup",
+        location: "Rivera palmeraie, Abidjan",
+        date: "24 Janvier 2025 → 24 Avril 2025",
+        description: "Développement d'API pour les projets, déploiement direct sur le serveur, et intégration d'API externes.",
+        technologies: ["Node.js", "Express", "PostgreSQL", "REST API", "Docker"],
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2070&auto=format&fit=crop"
+    },
+    {
+        id: "2",
+        title: "Développeur Fullstack",
+        company: "cabinenet",
+        location: "Freelance, Abidjan",
+        date: "Mai 2024 → Novembre 2024",
+        description: "Contribution au développement d'applications web innovantes en utilisant des technologies frontend et backend modernes.",
+        technologies: ["React", "Node.js", "MongoDB", "JavaScript", "CSS"],
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"
+    },
+    {
+        id: "3",
+        title: "Stage École pour BTS",
+        company: "ORW GROUP",
+        location: "Koumassie, Abidjan",
+        date: "Octobre 2023 → 27 Avril 2024",
+        description: "Développement d'une plateforme de prise de rendez-vous médicale en ligne.",
+        technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2070&auto=format&fit=crop"
+    }
+];
 
 const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -32,16 +53,7 @@ const staggerContainer = {
     },
 };
 
-export default function ProjetsPage() {
-    const [selectedCategory, setSelectedCategory] = useState("Tous");
-
-    const filteredProjects =
-        selectedCategory === "Tous"
-            ? projects
-            : projects.filter(
-                  (project) => project.category === selectedCategory,
-              );
-
+export default function ExperiencesPage() {
     return (
         <div className="min-h-screen pt-20 px-4">
             <div className="max-w-7xl mx-auto">
@@ -61,118 +73,68 @@ export default function ProjetsPage() {
                         </span>
                     </h1>
                     <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                        Une sélection de mes réalisations les plus
-                        représentatives
+                        Un aperçu de mes expériences professionnelles significatives
                     </p>
                 </motion.div>
 
-                {/* Filter */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="flex flex-wrap justify-center gap-2 mb-12"
-                >
-                    {categories.map((category) => (
-                        <Button
-                            key={category}
-                            variant={
-                                selectedCategory === category
-                                    ? "default"
-                                    : "outline"
-                            }
-                            onClick={() => setSelectedCategory(category)}
-                            className={`${
-                                selectedCategory === category
-                                    ? "bg-portfolio-yellow hover:bg-portfolio-orange text-portfolio-black"
-                                    : "border-portfolio-yellow hover:bg-portfolio-yellow hover:text-portfolio-black"
-                            }`}
-                        >
-                            <Filter className="w-4 h-4 mr-2" />
-                            {category}
-                        </Button>
-                    ))}
-                </motion.div>
-
-                {/* Projects Grid */}
+                {/* Experiences Timeline */}
                 <motion.div
                     variants={staggerContainer}
                     initial="initial"
                     animate="animate"
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="relative"
                 >
-                    {filteredProjects.map((project) => (
+                    {/* Timeline line */}
+                    <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-portfolio-yellow to-portfolio-orange hidden md:block"></div>
+
+                    {experiences.map((experience) => (
                         <motion.div
-                            key={project.id}
+                            key={experience.id}
                             variants={fadeInUp}
-                            layout
-                            className="group"
+                            className="relative mb-12 md:ml-16"
                         >
-                            <Card className="h-full hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-border hover:border-portfolio-yellow overflow-hidden">
+                            {/* Timeline dot */}
+                            <div className="absolute -left-20 top-6 w-4 h-4 bg-portfolio-yellow rounded-full border-4 border-background hidden md:block"></div>
+
+                            <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-border hover:border-portfolio-yellow overflow-hidden">
                                 <div className="relative overflow-hidden">
                                     <Image
-                                        src={project.image}
-                                        alt={project.title}
+                                        src={experience.image}
+                                        alt={`${experience.title} image`}
                                         width={400}
                                         height={240}
                                         className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                                     />
-                                    {project.featured && (
-                                        <Badge className="absolute top-3 right-3 bg-portfolio-orange text-portfolio-black">
-                                            Mis en avant
-                                        </Badge>
-                                    )}
                                 </div>
 
                                 <CardHeader>
                                     <CardTitle className="group-hover:text-portfolio-yellow transition-colors">
-                                        {project.title}
+                                        {experience.title}
                                     </CardTitle>
                                     <p className="text-muted-foreground text-sm">
-                                        {project.description}
+                                        {experience.company} - {experience.location}
+                                    </p>
+                                    <p className="text-muted-foreground text-sm">
+                                        {experience.date}
                                     </p>
                                 </CardHeader>
 
                                 <CardContent>
+                                    <p className="text-muted-foreground mb-4">
+                                        {experience.description}
+                                    </p>
                                     <div className="flex flex-wrap gap-2 mb-4">
-                                        {project.technologies.map(
-                                            (tech, index) => (
-                                                <Badge
-                                                    key={index}
-                                                    variant="secondary"
-                                                    className="bg-portfolio-yellow/10 text-portfolio-yellow text-xs"
-                                                >
-                                                    {tech}
-                                                </Badge>
-                                            ),
-                                        )}
+                                        {experience.technologies.map((tech, index) => (
+                                            <Badge
+                                                key={index}
+                                                variant="secondary"
+                                                className="bg-portfolio-yellow/10 text-portfolio-yellow text-xs"
+                                            >
+                                                {tech}
+                                            </Badge>
+                                        ))}
                                     </div>
                                 </CardContent>
-
-                                <CardFooter className="flex gap-2">
-                                    <Link
-                                        href={`/projets/${project.id}`}
-                                        className="flex-1"
-                                    >
-                                        <Button className="w-full bg-portfolio-yellow hover:bg-portfolio-orange text-portfolio-black">
-                                            Voir détails
-                                        </Button>
-                                    </Link>
-                                    <Button
-                                        variant="outline"
-                                        size="icon"
-                                        className="border-portfolio-yellow hover:bg-portfolio-yellow hover:text-portfolio-black"
-                                    >
-                                        <Github className="w-4 h-4" />
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        size="icon"
-                                        className="border-portfolio-yellow hover:bg-portfolio-yellow hover:text-portfolio-black"
-                                    >
-                                        <ExternalLink className="w-4 h-4" />
-                                    </Button>
-                                </CardFooter>
                             </Card>
                         </motion.div>
                     ))}
@@ -187,20 +149,12 @@ export default function ProjetsPage() {
                     className="text-center mt-20 p-8 rounded-2xl bg-gradient-to-r from-portfolio-yellow/10 via-portfolio-orange/10 to-portfolio-yellow/10"
                 >
                     <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                        Un projet en tête ?
+                        Une nouvelle opportunité ?
                     </h2>
                     <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                        Je suis toujours à la recherche de nouveaux défis.
-                        Discutons de votre projet !
+                        Je suis ouvert à de nouvelles collaborations.
+                        Contactez-moi pour discuter !
                     </p>
-                    <Link href="/contact">
-                        <Button
-                            size="lg"
-                            className="bg-portfolio-orange hover:bg-portfolio-yellow text-portfolio-black"
-                        >
-                            Contactez-moi
-                        </Button>
-                    </Link>
                 </motion.div>
             </div>
         </div>

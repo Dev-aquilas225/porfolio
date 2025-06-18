@@ -13,19 +13,19 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email',
-    content: 'contact@devweb.com',
-    link: 'mailto:contact@devweb.com'
+    content: 'christoinaquilas@gmail.com',
+    link: 'mailto:christoinaquilas@gmail.com'
   },
   {
     icon: Phone,
     title: 'Téléphone',
-    content: '+33 1 23 45 67 89',
-    link: 'tel:+33123456789'
+    content: '0768571247',
+    link: 'tel:0768571247'
   },
   {
     icon: MapPin,
     title: 'Localisation',
-    content: 'Paris, France',
+    content: 'Abidjan, abobo dépôt 9',
     link: '#'
   }
 ]
@@ -66,21 +66,40 @@ export default function ContactPage() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulation d'envoi
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Échec de l\'envoi du message')
+      }
+
+      const data = await response.json()
       setIsSubmitting(false)
       setIsSubmitted(true)
       toast({
         title: "Message envoyé !",
         description: "Je vous répondrai dans les plus brefs délais.",
       })
-      
+
       // Reset form after 3 seconds
       setTimeout(() => {
         setIsSubmitted(false)
         setFormData({ name: '', email: '', subject: '', message: '' })
       }, 3000)
-    }, 2000)
+    } catch (error) {
+      setIsSubmitting(false)
+      toast({
+        title: "Erreur",
+        description: error.message || "Une erreur s'est produite. Veuillez réessayer plus tard.",
+        variant: "destructive",
+      })
+    }
   }
 
   return (

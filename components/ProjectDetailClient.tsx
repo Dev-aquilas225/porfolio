@@ -1,4 +1,3 @@
-// components/ProjectDetailClient.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -212,7 +211,7 @@ export default function ProjectDetailClient({
                                                 Équipe
                                             </p>
                                             <p className="text-sm text-muted-foreground">
-                                                {project.team}
+                                                {project.team || "Non spécifié"}
                                             </p>
                                         </div>
                                     </div>
@@ -232,7 +231,7 @@ export default function ProjectDetailClient({
                 </div>
 
                 {/* Gallery */}
-                {project.gallery && (
+                {project.gallery && project.gallery.length > 0 && (
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}

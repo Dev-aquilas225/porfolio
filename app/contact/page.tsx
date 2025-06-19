@@ -96,7 +96,7 @@ export default function ContactPage() {
       setIsSubmitting(false)
       toast({
         title: "Erreur",
-        description: error.message || "Une erreur s'est produite. Veuillez réessayer plus tard.",
+        description: error instanceof Error ? error.message : "Une erreur s'est produite. Veuillez réessayer plus tard.",
         variant: "destructive",
       })
     }

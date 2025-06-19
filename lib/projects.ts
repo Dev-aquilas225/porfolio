@@ -19,10 +19,12 @@ export interface ProjectDetails {
     technologies: string[];
     features: string[];
     duration: string;
-    team?: string;
     role: string;
     location?: string;
     date?: string;
+    company?: string;
+    team?: string;
+    gallery: string[];
 }
 
 export const projects: Project[] = [
@@ -117,6 +119,7 @@ export const projectsData: { [key: string]: ProjectDetails } = {
         role: "Développeur Backend",
         location: "Rivera palmeraie, Abidjan",
         date: "24 Janvier 2025 → 24 Avril 2025",
+        gallery: [],
     },
     "2": {
         title: "Développeur Fullstack",
@@ -134,6 +137,7 @@ export const projectsData: { [key: string]: ProjectDetails } = {
         role: "Développeur Fullstack",
         location: "Freelance, Abidjan",
         date: "Mai 2024 → Novembre 2024",
+        gallery: [],
     },
     "3": {
         title: "Stage École pour BTS",
@@ -151,6 +155,7 @@ export const projectsData: { [key: string]: ProjectDetails } = {
         role: "Stagiaire Développeur",
         location: "Koumassie, Abidjan",
         date: "Octobre 2023 → 27 Avril 2024",
+        gallery: [],
     },
     "4": {
         title: "Licence en réseau et génie logiciel",
@@ -168,6 +173,7 @@ export const projectsData: { [key: string]: ProjectDetails } = {
         role: "Étudiant",
         location: "Abidjan, Plateau",
         date: "2021 → present",
+        gallery: [],
     },
     "5": {
         title: "BTS en informatique développeur d'application",
@@ -185,6 +191,7 @@ export const projectsData: { [key: string]: ProjectDetails } = {
         role: "Étudiant",
         location: "Abidjan, Plateau",
         date: "2023",
+        gallery: [],
     },
     "6": {
         title: "Certificat spécialiste en Microsoft Office",
@@ -202,5 +209,6 @@ export const projectsData: { [key: string]: ProjectDetails } = {
         role: "Étudiant",
         location: "Abidjan, Plateau",
         date: "2021",
+        gallery: [],
     },
 };
